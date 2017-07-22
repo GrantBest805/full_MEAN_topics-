@@ -1,0 +1,15 @@
+<div class="login">
+  <h5>Hello!<br>Please enter your name to join and share your ideas</h5>
+  <form (submit)="login(formData)" #formData="ngForm">
+  <input name="name"  
+      required 
+      minlength="4" 
+      maxlength="24"
+      type="text"
+      [(ngModel)]="user.name" #name='ngModel'>
+    <div [hidden]="name.valid || name.pristine">
+          <p>Name is required</p>
+    </div>
+    <input type="submit" value="Login">
+  </form>
+</div>

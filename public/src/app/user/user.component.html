@@ -1,0 +1,12 @@
+<div class="pull-right">
+  <a [routerLink]="['/dashboard']">Dashboard  |</a>
+  <a href="/logout">Logout</a>
+</div>
+
+<div *ngIf="user">
+  <h2>Username: {{user.name}}</h2>
+  <h3>Posted...</h3>
+  <h5>{{user._topic.length}} Topic</h5>
+  <h5>{{user._post.length}} Posts</h5>
+  <h5>{{user._comment.length}} Comment</h5>
+</div>

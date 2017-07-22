@@ -1,0 +1,9 @@
+.pull-right {
+  float: right !important;
+}
+button .btn btn-default pull-right{
+    margin-bottom: 10px;
+}
+.btn {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,42 @@
+<div style="text-align:right">
+  <a href="/logout"><u>Logout</u></a>
+</div>
+<h2 *ngIf="user">Welcome, {{user.name}}!</h2>
+<table class="table table-hover">
+  <tr>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>User Name</th>
+    <th>Post</th>
+  </tr>
+  <tr *ngFor="let topic of topics">
+    <td>{{topic.category}}</td>
+    <td><a [routerLink]="['/topic', topic._id]"><u>{{topic.topic}}</u></a></td>
+    <td><a [routerLink]="['/user', topic._user._id]"><u>{{topic._user.name}}</u></a></td>
+    <td>{{ topic._post.length }}</td>
+  </tr>
+</table>
+
+<form (submit)="createTopic(formData)" #formData="ngForm">
+
+<ul class="form-style-1">
+    <li><h4><u>Add a new Topic</u></h4></li>
+    <li>
+        <label>Topic: <span class="required">*</span></label>
+        <input type="text" name="topic" class="field-long" ngModel/>
+    </li>
+    <li>
+        <label>Description: </label>
+        <textarea name="description" id="field5" class="field-long field-textarea" ngModel></textarea>
+    </li>
+    <li>
+        <label>Category: <span class="required">*</span></label>
+        <select name="category" class="field-select" ngModel>
+        <option *ngFor="let cat of categories"  value="{{cat.categories}}" >{{cat.categories}}</option>
+        </select>
+    </li>
+    <li>
+        <input type="submit" value="Submit" />
+    </li>
+</ul>
+</form>

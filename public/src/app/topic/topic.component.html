@@ -1,0 +1,29 @@
+
+<div class="pull-right">
+  <a [routerLink]="['/dashboard']"><u>Dashboard</u> |</a>
+  <a href="/logout"><u>Logout</u></a>
+</div>
+<div *ngIf="topic">
+  <h3><a [routerLink]="['/user', topic._user._id]"><u>{{ topic._user.name }}</u></a> posted a topic:</h3>
+  <h4>{{topic.topic}}</h4>
+  <p>Description: {{topic.description}}</p>
+</div>
+
+<h3>Post your thoughts here...</h3>
+<form (submit)="createPost(formData, topic._id)" #formData="ngForm">
+  <div class="form-group">
+    <textarea type="text" class="form-control" placeholder="post here" name="answer" ngModel></textarea>
+  </div>
+  <button type="submit" class="btn btn-default pull-right">Post</button>
+</form>
+<div class="posts" *ngIf="topic">
+  <div *ngFor="let post of topic._post">
+      <h5><a [routerLink]="['/user', post._user._id]"><u>{{post._user.name}}:</u></a>  {{post.answer}}</h5>
+      <form (submit)="createComment(formData, post._id)" #formData="ngForm">
+        <div class="form-group">
+        <textarea type="text" class="form-control comment" placeholder="comment here" name="comment" ngModel></textarea>
+        </div>
+        <button type="submit" class="btn btn-default pull-right">Comment</button>
+      </form>
+  </div>
+</div>
